@@ -16,7 +16,7 @@ counter=0
           
       
 while 1:
-        ser.write('Write counter: %d \n'%(counter))
+        ser.write('KTI %d \n'%(counter))
 	print "Wysylam: " + str(counter)
-        time.sleep(1)
+        time.sleep(10)
         counter += 1
