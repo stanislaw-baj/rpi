@@ -1,7 +1,7 @@
 import serial
 import time
 import re
-from gpio import led_on, led_off, cleanup
+from gpio import led_on, led_off, register_port_listener
 
 
 def write(ser, msg):
@@ -25,6 +25,8 @@ ser = serial.Serial(
 
 counter=0
 parameter = b'KTI\r'
+
+register_port_listener()
 
 while True:
 
