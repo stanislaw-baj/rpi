@@ -40,7 +40,7 @@ while True:
 	elif re.match('ST \'(.*)\' ([0-9]+)wagi ([0-9][0-9][0-9])min', response.decode("utf-8")):
 		matches = re.match('ST \'(.*)\' ([0-9]+)wagi ([0-9][0-9][0-9])min', response.decode("utf-8"))
 		print 'wersja: ', matches.group(2)
-		print 'ilość wag: ', matches.group(3)
+		print 'ilosc wag: ', matches.group(3)
 		print 'czas [min]: ', matches.group(4)
 		led_off()
 	else:
