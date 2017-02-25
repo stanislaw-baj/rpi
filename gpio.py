@@ -20,5 +20,5 @@ def register_port_listener():
     def on_signal_received(port):
         led_on()
         print "Zmiana na port", port
-    GPIO.add_event_detect(20, GPIO.HIGH)
+    GPIO.add_event_detect(20, GPIO.RISING)
     GPIO.add_event_callback(20, on_signal_received)
