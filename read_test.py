@@ -1,5 +1,6 @@
 import serial
 import time
+import re
 from gpio import led_on, led_off, cleanup
 
 
@@ -36,10 +37,12 @@ while True:
 	print response
 	if b'OK' in response:
 		led_on()
-	# elif response == b'OK\r\n':
-	# 	led_on()
-	#  elif b'OK' in response:
-	# 	led_on()
+	elif re.match('ST \'(.*)\' ([0-9]+)wagi ([0-9][0-9][0-9])min', response.decode("utf-8")):
+		matches = re.match('ST \'(.*)\' ([0-9]+)wagi ([0-9][0-9][0-9])min', response.decode("utf-8"))
+		print 'wersja: ', matches.group(2)
+		print 'ilość wag: ', matches.group(3)
+		print 'czas [min]: ', matches.group(4)
+		led_off()
 	else:
 		led_off()
 	time.sleep(3)
