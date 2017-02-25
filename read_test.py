@@ -39,9 +39,9 @@ while True:
 		led_on()
 	elif re.match('ST \'(.*)\' ([0-9]+)wagi ([0-9][0-9][0-9])min', response.decode("utf-8")):
 		matches = re.match('ST \'(.*)\' ([0-9]+)wagi ([0-9][0-9][0-9])min', response.decode("utf-8"))
-		print 'wersja: ', matches.group(2)
-		print 'ilosc wag: ', matches.group(3)
-		print 'czas [min]: ', matches.group(4)
+		print 'wersja: ', matches.group(1)
+		print 'ilosc wag: ', matches.group(2)
+		print 'czas [min]: ', matches.group(3)
 		led_off()
 	else:
 		led_off()
