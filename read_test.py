@@ -1,12 +1,16 @@
 import serial
 import time
+from gpio import led_on, led_off, cleanup
+
 
 def write(ser, msg):
 	ser.write(msg)
 
-def write_and_read(ser):
-	write(ser, b'KTI\r')
+
+def write_and_read(ser, parameter):
+	write(ser, parameter)
 	data=ser.readline()
+
 	return data
 
 ser = serial.Serial(
@@ -19,9 +23,22 @@ ser = serial.Serial(
 )
 
 counter=0
+parameter = b'KTI\r'
 
 while True:
-	print(write_and_read(ser))
+
+	if counter % 2 == 1:
+		parameter = b'KT\r'
+	else:
+		parameter = b'KTI\r'
+
+	response = write_and_read(ser, parameter)
+	print response
+	if response == 'OK':
+		led_on()
+	else:
+		led_off()
 	time.sleep(3)
+	counter += 1
 
 ser.close()
