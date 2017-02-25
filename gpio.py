@@ -17,7 +17,8 @@ def cleanup():
     GPIO.cleanup()
 
 def register_port_listener():
-    def on_signal_received():
-        print "Zmiana na port 20"
+    def on_signal_received(arg):
+        led_on()
+        print "Zmiana na port 20", arg
     GPIO.add_event_detect(20, GPIO.BOTH)
     GPIO.add_event_callback(20, on_signal_received)
