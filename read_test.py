@@ -34,7 +34,7 @@ while True:
 
 	response = write_and_read(ser, parameter)
 	print response
-	if response == 'OK':
+	if response == b'OK\r\n':
 		led_on()
 	else:
 		led_off()
